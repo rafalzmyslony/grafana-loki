@@ -1,0 +1,3 @@
+#!/bin/bash
+civo volumes ls --region fra1 -o json | jq .[].id
+for i in $(civo firewall ls -o json | jq .[].id );   do     civo firewall remove $(echo $i | sed 's/"//g') --yes ;   done
